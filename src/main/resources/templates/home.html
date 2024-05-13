@@ -3,25 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <title th:text="${title}"></title>
-    <style>
-        .container {
-            width: 50%;
-            margin: auto;
-            padding: 30px;
-            border: 1px solid black;
-            background: #f1f1f1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-    </style>
+    <link rel="stylesheet" th:href="@{'./css/output.css'}">
 </head>
 <body>
-    <div class="container">
-        <h1 th:text="${content}"></h1>
-        <h1 th:text="${message}"></h1>
-        <a th:href="${githubRepoLink}">Click here to see the Repo</a>
+    <div class="bg-gray-200 w-1/2 p-4 mx-auto mt-4 flex flex-col space-y-3 rounded justify-center items-center">
+        <h1 class="text-2xl font-bold" th:text="${content}"></h1>
+        <h1 class="text-xl text-gray-700" th:text="${message}"></h1>
+        <a th:href="${githubRepoLink}"
+           class="px-3 py-3 rounded bg-blue-700 text-white hover:bg-blue-600 ">
+            Click here to see the Repo
+        </a>
     </div>
 </body>
 </html>

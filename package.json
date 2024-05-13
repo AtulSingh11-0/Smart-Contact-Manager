@@ -1,0 +1,23 @@
+{
+  "name": "smart-contact-manager",
+  "version": "1.0.0",
+  "description": "This is a simple web application to manage your contacts",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AtulSingh11-0/Smart-Contact-Manager.git"
+  },
+  "author": "Atul Singh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AtulSingh11-0/Smart-Contact-Manager/issues"
+  },
+  "homepage": "https://github.com/AtulSingh11-0/Smart-Contact-Manager#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.3"
+  }
+}
