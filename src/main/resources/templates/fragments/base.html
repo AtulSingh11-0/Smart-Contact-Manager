@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" th:fragment="parent(content, title, script)">
+  <head>
+    <meta charset="UTF-8" />
+    <title th:replace="${title}"></title>
+    <link rel="stylesheet" th:href="@{'./css/output.css'}" />
+  </head>
+  <body>
+    <section th:replace="${content}"></section>
+  </body>
+  <th:block th:replace="${script}"></th:block>
+</html>
