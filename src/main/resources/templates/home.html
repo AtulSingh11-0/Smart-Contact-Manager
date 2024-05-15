@@ -4,7 +4,6 @@
   lang="en"
 >
   <head>
-    <meta charset="UTF-8" />
     <title th:text="${pageTitle}"></title>
   </head>
   <body>
@@ -22,7 +21,7 @@
           Click here to see the Repo
         </a>
         <a
-          th:href="${'/about'}"
+          th:href="@{'/about'}"
           class="font-bold text-blue-500 hover:text-blue-700 hover:underline"
         >
           About Us

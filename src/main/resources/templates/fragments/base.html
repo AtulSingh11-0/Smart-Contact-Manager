@@ -2,11 +2,33 @@
 <html lang="en" th:fragment="parent(content, title, script)">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title th:replace="${title}"></title>
+
+    <!-- css link -->
     <link rel="stylesheet" th:href="@{'./css/output.css'}" />
+
+    <!-- flowbite link -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- font awesome link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
+    <nav th:replace="~{fragments/navbar.html :: navbar()}"></nav>
     <section th:replace="${content}"></section>
+    <footer th:replace="~{fragments/footer.html :: footer()}"></footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
   </body>
+  <script th:src="@{'/js/script.js'}"></script>
   <th:block th:replace="${script}"></th:block>
 </html>
