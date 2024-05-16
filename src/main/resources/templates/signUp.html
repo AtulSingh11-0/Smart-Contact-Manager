@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html
+  th:replace="~{fragments/base.html :: parent(~{ :: #content}, ~{ :: title}, ~{ :: script})}"
+  lang="en"
+>
+  <head>
+    <title th:text="${pageTitle}"></title>
+  </head>
+  <body>
+    <div
+      id="content"
+      class="border-t-[10px] border-blue-700 mt-5 ml-auto mr-auto w-full max-w-lg p-4 bg-white rounded-lg shadow-lg sm:p-6 md:p-8 dark:bg-gray-800"
+    >
+      <form class="space-y-6" action="#" th:object="${userForm}" method="post" th:action="@{'/do-signUp'}">
+        <h5
+          class="flex justify-center text-3xl font-medium text-gray-900 dark:text-white"
+        >
+          Sign-Up
+        </h5>
+        <div>
+          <label
+            for="email"
+            class="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+            >Your name</label
+          >
+          <input
+            type="name"
+            name="name"
+            id="name"
+            th:field="*{name}"
+            autocomplete="name"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+            placeholder="John Doe"
+            required
+          />
+        </div>
+        <div>
+          <label
+            for="email"
+            class="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+            >Your email</label
+          >
+          <input
+            type="email"
+            name="email"
+            id="email"
+            th:field="*{email}"
+            autocomplete="email"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+            placeholder="name@company.com"
+            required
+          />
+        </div>
+        <div>
+          <label
+            for="password"
+            class="block mb-2 text-base font-medium text-gray-900 dark:text-white"
+            >Your password</label
+          >
+          <input
+            type="password"
+            name="password"
+            id="password"
+            th:field="*{password}"
+            autocomplete="current-password"
+            placeholder="••••••••"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+            required
+          />
+        </div>
+        <label
+          for="phone-input"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Phone number:</label
+        >
+        <div class="relative">
+          <div
+            class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none"
+          >
+            <svg
+              class="w-4 h-4 text-gray-500 dark:text-gray-400"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="currentColor"
+              viewBox="0 0 19 18"
+            >
+              <path
+                d="M18 13.446a3.02 3.02 0 0 0-.946-1.985l-1.4-1.4a3.054 3.054 0 0 0-4.218 0l-.7.7a.983.983 0 0 1-1.39 0l-2.1-2.1a.983.983 0 0 1 0-1.389l.7-.7a2.98 2.98 0 0 0 0-4.217l-1.4-1.4a2.824 2.824 0 0 0-4.218 0c-3.619 3.619-3 8.229 1.752 12.979C6.785 16.639 9.45 18 11.912 18a7.175 7.175 0 0 0 5.139-2.325A2.9 2.9 0 0 0 18 13.446Z"
+              />
+            </svg>
+          </div>
+          <input
+            type="number"
+            id="phone-input"
+            th:field="*{phone}"
+            style="appearance: none; -moz-appearance: textfield"
+            autocomplete="tel"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            placeholder="987-654-3210"
+            required
+          />
+        </div>
+        <div>
+          <label
+            for="message"
+            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+            >Wrtie something about yourself</label
+          >
+          <textarea
+            id="message"
+            rows="4"
+            th:field="*{about}"
+            class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Write here..."
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        >
+          Create account
+        </button>
+        <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
+          Already have an account?
+          <a
+            th:href="@{'/login'}"
+            class="text-blue-700 hover:underline dark:text-blue-500"
+            >Login here</a
+          >
+        </div>
+      </form>
+    </div>
+  </body>
+  <script>
+    console.log("Hello from the sign-up page");
+  </script>
+</html>
