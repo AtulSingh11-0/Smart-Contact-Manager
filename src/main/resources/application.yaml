@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: Smart Contact Manager # application name
+  datasource: # datasource configuration
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/Smart_Contact_Manager?createDatabaseIfNotExist=true # database url
+    username: ${MYSQL_USER:root} # database username
+    password: ${MYSQL_PASSWORD:12345} # database password
+
+  jpa: # jpa configuration
+    properties: # jpa properties
+      hibernate: # hibernate properties
+        dialect: org.hibernate.dialect.MySQLDialect # hibernate dialect
+    hibernate: # hibernate configuration
+      ddl-auto: update # hibernate ddl-auto
+    show-sql: false # show sql
+    open-in-view: false # open in view
+
+server: # server configuration
+  port: 1234

@@ -19,5 +19,8 @@
   "homepage": "https://github.com/AtulSingh11-0/Smart-Contact-Manager#readme",
   "devDependencies": {
     "tailwindcss": "^3.4.3"
+  },
+  "dependencies": {
+    "smart-contact-manager": "file:"
   }
 }
