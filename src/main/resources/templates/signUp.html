@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html
-  th:replace="~{fragments/base.html :: parent(~{ :: #content}, ~{ :: title}, ~{ :: script})}"
+  data-th-replace="~{fragments/base.html :: parent(~{ :: #content}, ~{ :: title}, ~{ :: script})}"
   lang="en"
 >
   <head>
-    <title th:text="${pageTitle}"></title>
+    <title data-th-text="${pageTitle}"></title>
+    <style>
+      /* Additional styles for responsiveness and padding */
+      @media (min-width: 640px) {
+        #content {
+          padding-top: 2rem;
+          padding-bottom: 2rem;
+        }
+      }
+      @media (min-width: 768px) {
+        #content {
+          padding-top: 3rem;
+          padding-bottom: 3rem;
+        }
+      }
+      @media (min-width: 1024px) {
+        #content {
+          padding-top: 4rem;
+          padding-bottom: 4rem;
+        }
+      }
+    </style>
   </head>
   <body>
     <div
       id="content"
       class="border-t-[10px] border-blue-700 mt-5 ml-auto mr-auto w-full max-w-lg p-4 bg-white rounded-lg shadow-lg sm:p-6 md:p-8 dark:bg-gray-800"
     >
-      <form class="space-y-6" action="#" th:object="${userForm}" method="post" th:action="@{'/do-signUp'}">
+      <form
+        class="space-y-6"
+        action="#"
+        data-th-object="${userForm}"
+        method="post"
+        data-th-action="@{'/do-signUp'}"
+        novalidate
+      >
         <h5
           class="flex justify-center text-3xl font-medium text-gray-900 dark:text-white"
         >
@@ -27,12 +55,17 @@
             type="name"
             name="name"
             id="name"
-            th:field="*{name}"
+            data-th-field="*{name}"
             autocomplete="name"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             placeholder="John Doe"
             required
           />
+          <p
+            data-th-if="${#fields.hasErrors('name')}"
+            data-th-errors="*{name}"
+            class="text-red-500 text-sm font-medium px-1 py-2"
+          ></p>
         </div>
         <div>
           <label
@@ -44,12 +77,17 @@
             type="email"
             name="email"
             id="email"
-            th:field="*{email}"
+            data-th-field="*{email}"
             autocomplete="email"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             placeholder="name@company.com"
             required
           />
+          <p
+            data-th-if="${#fields.hasErrors('email')}"
+            data-th-errors="*{email}"
+            class="text-red-500 text-sm font-medium px-1 py-2"
+          ></p>
         </div>
         <div>
           <label
@@ -61,12 +99,17 @@
             type="password"
             name="password"
             id="password"
-            th:field="*{password}"
+            data-th-field="*{password}"
             autocomplete="current-password"
             placeholder="••••••••"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             required
           />
+          <p
+            data-th-if="${#fields.hasErrors('password')}"
+            data-th-errors="*{password}"
+            class="text-red-500 text-sm font-medium px-1 py-2"
+          ></p>
         </div>
         <label
           for="phone-input"
@@ -92,7 +135,7 @@
           <input
             type="number"
             id="phone-input"
-            th:field="*{phone}"
+            data-th-field="*{phone}"
             style="appearance: none; -moz-appearance: textfield"
             autocomplete="tel"
             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -101,19 +144,29 @@
             required
           />
         </div>
+        <p
+          data-th-if="${#fields.hasErrors('phone')}"
+          data-th-errors="*{phone}"
+          class="text-red-500 text-sm font-medium"
+        ></p>
         <div>
           <label
             for="message"
             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-            >Wrtie something about yourself</label
+            >Write something about yourself</label
           >
           <textarea
             id="message"
             rows="4"
-            th:field="*{about}"
+            data-th-field="*{about}"
             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Write here..."
           ></textarea>
+          <p
+            data-th-if="${#fields.hasErrors('about')}"
+            data-th-errors="*{about}"
+            class="text-red-500 text-sm font-medium px-1 py-2"
+          ></p>
         </div>
         <button
           type="submit"
@@ -124,7 +177,7 @@
         <div class="text-sm font-medium text-gray-500 dark:text-gray-300">
           Already have an account?
           <a
-            th:href="@{'/login'}"
+            data-th-href="@{'/login'}"
             class="text-blue-700 hover:underline dark:text-blue-500"
             >Login here</a
           >

@@ -2,10 +2,13 @@ package com.demo.smart_contact_manager.controllers;
 
 import com.demo.smart_contact_manager.request.UserForm;
 import com.demo.smart_contact_manager.services.UserService;
+import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -51,7 +54,12 @@ public class PageController {
   }
 
   @RequestMapping(value = "/do-signUp", method = RequestMethod.POST)
-  public String doSignUp( @ModelAttribute("userForm") UserForm userForm ) {
+  public String doSignUp( @Valid @ModelAttribute("userForm") UserForm userForm, BindingResult result, HttpSession session ) {
+
+    if ( result.hasErrors() ) {
+      log.error("Validation Error: {}", result.toString());
+      return "signUp";
+    }
 
     log.info("User form: {}", userForm.toString());
     userService.saveUser(userForm);
